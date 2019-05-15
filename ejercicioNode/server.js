@@ -40,7 +40,7 @@ app.get('/traer', function (req, res) {
         }
         try{
            var array = JSON.parse(data);
-           setTimeout(function(){res.send(array);},0) //timeout;
+           setTimeout(function(){res.send(array);},500)
         }
         catch(e){
             console.log(e);

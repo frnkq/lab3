@@ -2,7 +2,8 @@ function CrearTabla(divName)
 {
     var table = document.createElement("table");
     var tableDiv = document.getElementById(divName);
-    
+    tableDiv.innerHtml = "";
+
     var thead = CreateThead();
     table.appendChild(thead);
 
@@ -48,7 +49,7 @@ function CreateTbody()
             td.innerText = personas[i][fields[j]];
             if(td.innerText == "undefined")
                 td.innerText = "";
-            
+
             td.onclick = TdClick;
             tr.appendChild(td);
         }

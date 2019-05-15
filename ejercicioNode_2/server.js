@@ -28,9 +28,21 @@ function getPathFromCollection(collection){
 
 app.get('/traerpersona', function (req, res) {
 
-    var indice = req.query.indice;    
-    
-    res.send(JSON.stringify(Personas[indice]));    
+    var indice = req.query.indice;
+    require('fs').readFile(__dirname + getPathFromCollection("personams"), 'utf8', function (err, data) {
+        if (err) {
+            // error handling
+        }
+        try{
+           var array = JSON.parse(data);
+           setTimeout(function(){res.send(array[indice]);},0) //timeout;
+        }
+        catch(e){
+            console.log(e);
+        }
+
+    });
+
 });
 
 app.get('/traer', function (req, res) {
@@ -40,16 +52,16 @@ app.get('/traer', function (req, res) {
         }
         try{
            var array = JSON.parse(data);
-           setTimeout(function(){res.send(array);},0) //timeout;
+           setTimeout(function(){res.send(array);},500) //timeout;
         }
         catch(e){
             console.log(e);
         }
-            
-    });  
+
+    });
 });
 
-app.use(bodyParser.urlencoded({ extended: false })); 
+app.use(bodyParser.urlencoded({ extended: false }));
 
 var server=app.listen(port ,function(){
     console.log('Servidor web iniciado. Escuchando en el puerto ' + port);
