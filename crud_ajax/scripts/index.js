@@ -38,11 +38,13 @@ RTA:{"message":"Baja exitosa"}
 //NOTA: EL REQUEST HEADER SE AGREGA UNA VEZ ABIERTA LA CONEXION
 var xhr;
 var personas;
-
+var fields;
 window.onload = Run;
 
 function Run()
 {
   getPersonas();
+  var agregar = document.getElementById("btnAgregar");
+  agregar.onclick = PopUpMenu.bind(null, null);
 }
 

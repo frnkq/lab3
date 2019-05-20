@@ -1,19 +1,28 @@
-function actualizarTabla()
+function notifyModificacion()
 {
-  var spinner = document.getElementById("spinner");
-  spinner.style.display = "block";
   if(xhr.readyState == 4)
   {
     if(xhr.status == 200)
     {
-      spinner.style.display = "none";
-      personas = JSON.parse(xhr.responseText); 
-      console.log(personas);
-      var tablaDiv = document.getElementById("divTabla");
-      tablaDiv.innerHtml = "";
+      response = xhr.responseText;
+      alert(response);
+      SetSpinner();
+      getPersonas();
+    }
+  }
+}
 
-      var tabla = CrearTabla(personas);
-      tablaDiv.appendChild(tabla);
+function notifyDeletion()
+{
+  if(xhr.readyState == 4)
+  {
+    if(xhr.status == 200)
+    {
+      response = JSON.parse(xhr.responseText);
+      console.log(response);
+      alert(response.message);
+      SetSpinner();
+      getPersonas();
     }
   }
 }
